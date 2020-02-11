@@ -1,0 +1,75 @@
+Question 3 Answer
+
+I would consider the second one the better option considering it's the most using the objects methods.
+You can use the information that the name is null for error trapping after through processing
+but the initial error trapping doesn't actually happen due to how direct the access to the name is with 'ob.name'.
+It bypasses the conditionals that let the user know that the name has been added as null.
+
+Question 4 Answer
+
+The way data is accessed doesn't give any errors. 
+What if the pathIP is wrong? There are no failed returns.
+Conditionals should be added like within the A and B programs to return a message 
+saying what they're looking for doesn't exist or what they're trying to do isn't
+what this is designed to do.
+
+
+
+class MyReader {
+    // -------------- unrelated functions
+    public boolean validateLocation(String pathIP) { // I think this is fine as it just checks if both are either true or false
+         return ping(pathIP) && checkFTP(pathIP);
+    }
+    private boolean checkFTP(String pathIP) {
+		boolean output = true;
+		if(pathIP == null) {
+		output = false;
+			System.out.println("That IP is null so output is now false");
+		}
+		else{
+        return output;
+		}
+    }
+
+    private boolean ping(String pathIP) {
+		boolean output = true;
+		if(pathIP == null) {
+		output = false;
+			System.out.println("That IP is null so output is now false");
+		}
+        return output;
+    }
+
+    // -------------- functions related to read resource
+	//Added conditions to each method so they check for null
+    // read the resource from disk
+    public String readFromDisk(String fileName) {
+		
+		if(fileName == null) {
+			return "That files null";
+		}
+        else {
+			return "data of " + fileName;
+		}
+    }
+
+    // read the resource from web
+    public String readFromWeb(String url) {
+		if(url == null) {
+			return "That urls null";
+		}
+        else {
+         return "data of " + url;
+    }
+
+    // read the resource from network
+    public String readFromNetwork(String networkAddress) {
+		if(url == null) {
+			return "That urls null";
+		}
+		else{
+         return "data of " + networkAddress;
+		}
+    }
+
+}
